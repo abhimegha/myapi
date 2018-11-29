@@ -5,7 +5,7 @@ https://srm-academia.herokuapp.com/
 
 ## Getting Access Token Of User
 ```
-https://srm-academia.herokuapp.com//token?email=****@srmuniv.edu.in&pass=***
+https://srm-academia.herokuapp.com/token?email=****@srmuniv.edu.in&pass=***
 ```
 
 ## Getting Attendance and Marks Of User

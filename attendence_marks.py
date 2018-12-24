@@ -98,14 +98,15 @@ def getAttendenceAndMarks(token):
         dom('table[align="center"]').eq(2).find('tr:nth-child(n + 2)').each(get_marks)
 
 
-        AttendanceAndMarks = {}
+        AttendanceAndMarks = []
 
         for index, value in AttendanceDetails.items():
+            value["SubjectCode"] = index
             if index in Marks:
                 value["Marks"] = Marks[index]
             else:
                 value["Marks"] = "Not Updated Yet"
-            AttendanceAndMarks[index] = value
+            AttendanceAndMarks.append(value)
 
 
         if len(AttendanceAndMarks) > 5:

@@ -66,15 +66,7 @@ def getTimeTable(token, batch):
                 "urlParams": {},
                 "isPageLoad": "true"}
 
-        dom = requests.post(url, data=data, headers=headers,cookies=Cookies).text
-
-        s1 = '$("#zc-viewcontainer_' + viewLinkName + '").prepend(pageSanitizer.sanitize('
-        s2 = '});</script>'
-
-        a, b = dom.find(s1), dom.find(s2)
-        dom = pq(dom[a + 56 + len(viewLinkName):b - 5])
-
-
+        dom = pq(requests.post(url, data=data, headers=headers,cookies=Cookies).text)
 
 
         for value in dom('table[width="400"]').find('tr').eq(0).find('td:nth-child(n + 2)'):
@@ -88,7 +80,7 @@ def getTimeTable(token, batch):
             json_o = json.dumps(json_o)
             return json_o
         else:
-            json_o = {"status": "error", "msg": "Error occured"}
+            json_o = {"status": "error", "msg": "Error in token"}
             json_o = json.dumps(json_o)
             return json_o
 

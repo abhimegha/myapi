@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    json_o = [{"status": "success", "msg": "***  ACADEMIA API  *** By ABHISHEK"}]
+    json_o = {"status": "success", "msg": "*** ACADEMIA API WITH PYTHON *** By Yogesh Kumawat"}
     json_o = json.dumps(json_o)
     return json_o
 
@@ -26,7 +26,7 @@ def request():
         response = Response(response, status=200, mimetype='application/json')
         return response
     else:
-        response = [{"status":"error", "msg":"Error in Input Parameters"}]
+        response = {"status":"error", "msg":"Error in Input Parameters"}
         response = json.dumps(response)
         response = Response(response, status=200, mimetype='application/json')
         return response

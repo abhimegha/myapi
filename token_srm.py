@@ -28,7 +28,7 @@ def getToken(username, password):
 
     if "error" in json_data:
         error_m = json_data['error']['msg']
-        json_o = [{"status":"error", "msg":error_m}]
+        json_o = {"status":"error", "msg":error_m}
         return json.dumps(json_o)
     else:
         params = parse_qs(json_data['data']['token_params'])

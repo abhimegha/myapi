@@ -25,7 +25,7 @@ def get_attendancedata(index, element):
 
     if index == 0:
         AttendanceDetails = []
-    print(AttendanceDetails)
+    # print(AttendanceDetails)
     CourseCode = pq(element).find('td').eq(0).text()
 
     if CourseCode.find("Regular") == -1:
@@ -33,6 +33,27 @@ def get_attendancedata(index, element):
     else:
         CourseCode = CourseCode[:-8]
 
+        HoursConducted  = int(pq(element).find('td').eq(6).text())
+        HoursAbsent = int(pq(element).find('td').eq(7).text())
+        HoursPresent = HoursConducted - HoursAbsent
+        HoursNeeded = 0
+        SafeToBunk = 0
+
+        if HoursConducted != 0:
+            c = (HoursPresent / HoursConducted) * 100
+
+            if c <= 75:
+                while c <= 75:
+                    c = (HoursPresent / HoursConducted) * 100
+                    HoursConducted += 1
+                    HoursPresent += 1
+                    HoursNeeded += 1
+
+            else:
+                while c > 75:
+                    c = (HoursPresent / HoursConducted) * 100
+                    HoursConducted += 1
+                    SafeToBunk += 1
 
         AttendanceDetails.append({
             "CourseCode": CourseCode,
@@ -44,6 +65,8 @@ def get_attendancedata(index, element):
             "HoursConducted": pq(element).find('td').eq(6).text(),
             "HoursAbsent": pq(element).find('td').eq(7).text(),
             "Attendance": pq(element).find('td').eq(8).text(),
+            "HoursNeeded": HoursNeeded,
+            "SafeToBunk": SafeToBunk,
             "UniversityPracticalDetails": pq(element).find('td').eq(9).text()})
 
 

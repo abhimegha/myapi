@@ -54,6 +54,13 @@ def get_attendancedata(index, element):
                     c = (HoursPresent / HoursConducted) * 100
                     HoursConducted += 1
                     SafeToBunk += 1
+            if (SafeToBunk <= 2):
+                SafeToBunk = 0
+            if (SafeToBunk >= 2):
+                SafeToBunk = SafeToBunk - 2
+                
+            
+                        
 
         AttendanceDetails.append({
             "CourseCode": CourseCode,

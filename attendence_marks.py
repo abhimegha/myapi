@@ -90,6 +90,11 @@ def get_marks(index, element):
 
     Marks_each["CourseCode"] = CourseCode;
     Marks_each["Total"] = MarksTotal;
+    if (MarksTotal<25):
+    	Marks_each["Marksneeded"] = 25 - MarksTotal;
+    else:
+    	Marks_each["Marksneeded"] = "You have good marks";
+
 
     Marks.append(Marks_each)
 

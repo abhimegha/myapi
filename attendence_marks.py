@@ -106,7 +106,7 @@ def get_marks(index, element):
     Marks.append(Marks_each)
 
 
-url = "https://academia.srmuniv.ac.in/liveViewHeader.do"
+url = "https://academia.srmist.edu.in/liveViewHeader.do"
 
 
 def getAttendenceAndMarks(token):
@@ -121,7 +121,7 @@ def getAttendenceAndMarks(token):
 
         viewLinkName = "My_Attendance"
 
-        headers = {'Origin': 'https://academia.srmuniv.ac.in',
+        headers = {'Origin': 'https://academia.srmist.edu.in',
                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36'
                    }
         data = {"sharedBy": "srm_university",

@@ -4,7 +4,7 @@ from urllib.parse import parse_qs
 import base64
 
 
-url = "https://academia.srmuniv.ac.in/accounts/signin.ac"
+url = "https://academia.srmist.edu.in/accounts/signin.ac"
 
 headers = {'Origin': 'https://academia.srmuniv.ac.in',
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36' }
@@ -18,7 +18,7 @@ def getToken(username, password):
                'client_portal': 'true',
                'portal': '10002227248',
                'servicename': 'ZohoCreator',
-               'serviceurl': 'https://academia.srmuniv.ac.in/',
+               'serviceurl': 'https://academia.srmist.edu.in/',
                'is_ajax': 'true',
                'grant_type': 'password',
                'service_language': 'en'}
@@ -32,7 +32,7 @@ def getToken(username, password):
         return json.dumps(json_o)
     else:
         params = parse_qs(json_data['data']['token_params'])
-        params['state'] = 'https://academia.srmuniv.ac.in/'
+        params['state'] = 'https://academia.srmist.edu.in/'
         r = requests.get(json_data['data']['oauthorize_uri'], data=params, headers=headers)
         token = json.dumps(r.history[0].cookies.get_dict())
         token = str(base64.encodestring(str.encode(token)),'utf-8')
